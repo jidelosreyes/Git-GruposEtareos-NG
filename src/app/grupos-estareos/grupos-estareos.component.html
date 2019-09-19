@@ -1,0 +1,21 @@
+<div class="k-block">
+  <button kendoButton [look]="'default'">Default</button>
+  
+  <kendo-grid [data]="GruposEtareos" [height]="410">
+    <kendo-grid-column field="ID" title="ID" width="40">
+    </kendo-grid-column>
+    <kendo-grid-column field="COD_SEXO" title="Sexo" width="250">
+    </kendo-grid-column>
+    <kendo-grid-column field="EDAD_MINIMA" title="Edad Minima">
+    </kendo-grid-column>
+    <kendo-grid-column field="EDAD_MAXIMA" title="Edad Maxima" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="ID_UNIDADMEDIDA" title="Unidad de Medida" width="80">
+    </kendo-grid-column>
+    <kendo-grid-column field="DESC_GRUPOETAREO" title="Descripción" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
+        </ng-template>
+    </kendo-grid-column>
+</kendo-grid>
+</div>
