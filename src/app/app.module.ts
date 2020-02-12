@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from './ui/ui.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +30,8 @@ import { GruposEtareosService } from './grupos-etareos.service';
     BrowserAnimationsModule,
     UiModule,
     HttpClientModule,
-    GridModule
+    GridModule,
+    DropDownsModule
   ],
   providers: [ GruposEtareosService ],
   bootstrap: [AppComponent]

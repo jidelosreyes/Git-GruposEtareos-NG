@@ -1,21 +1,123 @@
-<div class="k-block">
-  <button kendoButton [look]="'default'">Default</button>
-  
-  <kendo-grid [data]="GruposEtareos" [height]="410">
-    <kendo-grid-column field="ID" title="ID" width="40">
-    </kendo-grid-column>
-    <kendo-grid-column field="COD_SEXO" title="Sexo" width="250">
-    </kendo-grid-column>
-    <kendo-grid-column field="EDAD_MINIMA" title="Edad Minima">
-    </kendo-grid-column>
-    <kendo-grid-column field="EDAD_MAXIMA" title="Edad Maxima" width="80">
-    </kendo-grid-column>
-    <kendo-grid-column field="ID_UNIDADMEDIDA" title="Unidad de Medida" width="80">
-    </kendo-grid-column>
-    <kendo-grid-column field="DESC_GRUPOETAREO" title="Descripción" width="120">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
-        </ng-template>
-    </kendo-grid-column>
-</kendo-grid>
-</div>
+<form>
+    <div class="container">    
+        <div class="panel pane-default">
+            <div class="panel-body">
+                <div class="form-row tabla-datos1" id="formParametricaGE">
+                    <DIV class="TitulosSeccion form-group col-md-12" style="HEIGHT: 17px; WIDTH: 100%; LEFT: 8px; Z-INDEX: 101; TOP: 8px; text-align: center" ms_positioning="FlowLayout">
+                        <P>
+                            <SPAN class="TitulosSeccion">
+                                <STRONG style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #374da1; font-size: 2">Parametrización Grupos Etareos</STRONG>
+                            </SPAN>
+                        </P>
+                    </DIV>
+                    ESTADO_GRUPOETAREO: {{ESTADO_GRUPOETAREO}}
+                    <div class="form-row tabla-datos1" id="formParametricaGE">
+                        <div class="form-group col-md-12">
+                            <div class="k-block k-content">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="control-label labels" for="DESC_GRUPOETAREO"><strong>Descripción</strong></label>
+                                        <kendo-autocomplete id="DESC_GRUPOETAREO" name="DESC_GRUPOETAREO"
+                                                [data]="GruposEtareos" valueField="DESC_GRUPOETAREO"
+                                                [placeholder]="'Descripción Grupo Etareo'"
+                                                class="countries" style="width: 100%" [(ngModel)]="DESC_GRUPOETAREO">
+                                        </kendo-autocomplete>
+                                        <span class="k-invalid-msg  col-md-3" data-for="DESC_GRUPOETAREO"></span>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="control-label labels" for="ESTADO_GRUPOETAREO"><strong>Habilitar Grupo Etareo</strong></label>
+                                        <div class="form-check">                                        
+                                            <label class="k-form-field center">
+                                                <input kendoCheckBox 
+                                                    type="checkbox"
+                                                    id="ESTADO_GRUPOETAREO"
+                                                    class="k-checkbox"
+                                                    checked="true"
+                                                />
+                                                <label class="k-checkbox-label" for="ESTADO_GRUPOETAREO"></label>
+                                            </label>
+                                        </div>
+                                        <input class="k-checkbox" id="ESTADO_GRUPOETAREO" name="ESTADO_GRUPOETAREO" type="checkbox" checked="true">
+                                    
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group col-md-2" id="dvSexo">
+                                        <label class="control-label labels" for="COD_SEXO"><strong>Sexo</strong></label>
+                                        <!-- <kendo-dropdownlist class="k-widget k-dropdown k-header" id="COD_SEXO" name="COD_SEXO" [data]="Sexo" textField="DESC_SEXO" valueField="COD_SEXO">
+                                        </kendo-dropdownlist> -->
+                                        <kendo-dropdownlist id="COD_SEXO" 
+                                            name="COD_SEXO" [data]="Sexo" 
+                                            textField="DESC_SEXO" valueField="COD_SEXO"
+                                            [valuePrimitive]="true"
+                                            [value]="'-1'">
+                                        </kendo-dropdownlist>
+                                        <span class="k-invalid-msg  col-md-3" data-for="COD_SEXO"></span>
+                                    </div>
+                                    <div class="form-group col-md-2" id="dvEdades">
+                                        <label class="control-label labels" for="EDAD_MINIMA"><strong>Edad Mínima</strong></label>
+                                        <input kendoTextBox id="EDAD_MINIMA" name="EDAD_MINIMA" maxlength="5" style="width: 100%" />
+                                        <span class="k-invalid-msg" data-for="EDAD_MINIMA"></span>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="control-label labels" for="EDAD_MAXIMA"><strong>Edad Máxima</strong></label>
+                                        <input kendoTextBox id="EDAD_MAXIMA" name="EDAD_MAXIMA" maxlength="5" style="width: 100%">
+                                        <span class="k-invalid-msg" data-for="EDAD_MAXIMA"></span>
+                                    </div>
+                                    <div class="form-group col-md-3" id="dvUnidadMedida">
+                                        <label class="control-label labels" for="ID_UNIDADMEDIDA"><strong>Unidad de Medida</strong></label>
+                                        <kendo-dropdownlist id="ID_UNIDADMEDIDA" 
+                                            name="ID_UNIDADMEDIDA" [data]="UnidadMedida" 
+                                            textField="DESC_UNIDADMEDIDA" valueField="ID_UNIDADMEDIDA" 
+                                            [valuePrimitive]="true"
+                                            [value]="-1">
+                                        </kendo-dropdownlist>
+                                        <span class="k-invalid-msg" data-for="ID_UNIDADMEDIDA"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">                                
+                                    <div class="form-group col-md-12" style="text-align: right;">
+                                        <button kendoButton [look]="'btnGrabar'" (click)="setData()" class="k-button"><strong>Grabar</strong></button>
+                                        <button kendoButton [look]="'btnNuevo'" class="k-button"><strong>Nuevo</strong></button>
+                                        <button kendoButton [look]="'btnActualizar'" class="k-button"><strong>Actualizar</strong></button>
+                                        <button kendoButton [look]="'btnRetornar'" class="k-button"><strong><< Retornar</strong></button>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">                                
+                                    <kendo-grid [data]="GruposEtareos" [height]="410" class="tabla-datos1">
+                                        <kendo-grid-column field="ID" title="Código" width="40" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="DESC_GRUPOETAREO" title="Descripción" width="120" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="EDAD_MINIMA" title="Edad Mínima" width="50" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="EDAD_MAXIMA" title="Edad Máxima" width="50" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="DESC_SEXO" title="Sexo" width="50" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="DESC_UNIDADMEDIDA" title="Unidad de Medida" width="80" [headerStyle]="{'text-align': 'center'}">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="ESTADO_GRUPOETAREO" title="Estado" width="40" [style]="{'text-align': 'center'}" [headerStyle]="{'text-align': 'center'}">
+                                            <ng-template kendoGridCellTemplate let-dataItem>
+                                                <input type="checkbox" [checked]="dataItem.ESTADO_GRUPOETAREO" disabled/>
+                                            </ng-template>
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="COD_SEXO" title="Sexo" width="5" *ngIf="hide">
+                                        </kendo-grid-column>
+                                        <kendo-grid-column field="ID_UNIDADMEDIDA" title="Unidad de Medida" width="80" *ngIf="hide">
+                                        </kendo-grid-column>
+                                    </kendo-grid>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
